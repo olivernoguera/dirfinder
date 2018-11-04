@@ -51,9 +51,37 @@ public class BasicDirectoryServiceTest {
         Assert.assertThat("findWord string",  directorySearchResult.toString(),
                 (is(expectedStringResult)));
 
+    }
+
+
+    @Test
+    public void findWordElevenElements(){
+
+        String wordTest = "test";
+        DirectorySearch expectedDirectorySearch = new BasicDirectorySearch();
+        appendXElements(expectedDirectorySearch,8);
+        expectedDirectorySearch.append(new DirectorySearchToken("file"+10,60));
+        expectedDirectorySearch.append(new DirectorySearchToken("file"+11,60));
+        String expectedStringResult = expectedDirectorySearch.toString();
+
+        DirectorySearch expectedDirectorySearchWithEleven = new BasicDirectorySearch();
+        appendXElements(expectedDirectorySearchWithEleven,9);
+        expectedDirectorySearchWithEleven.append(new DirectorySearchToken("file"+10,60));
+        expectedDirectorySearchWithEleven.append(new DirectorySearchToken("file"+11,60));
+
+
+        Mockito.when(directory.findWordsInDirectory(wordTest)).thenReturn(expectedDirectorySearchWithEleven);
+        DirectorySearch directorySearchResult = directoryService.findWord(wordTest);
+        Assert.assertThat("findWord eleven elements",  directorySearchResult.toString(),
+                (is(expectedStringResult)));
 
     }
 
+    private  static void appendXElements(DirectorySearch directorySearch, int numberElements){
+        for(int i = 1; i <= numberElements;i++){
+            directorySearch.append(new DirectorySearchToken("file"+i,50));
+        }
+    }
 
     @Test
     public void findWordNotMatches(){

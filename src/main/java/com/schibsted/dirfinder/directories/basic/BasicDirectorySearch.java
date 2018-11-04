@@ -9,7 +9,7 @@ import java.util.TreeSet;
 public class BasicDirectorySearch implements DirectorySearch {
 
     private Set<DirectorySearchToken> files = new TreeSet();
-
+    private final static Integer LIMIT_TOP = 10;
 
     public void append(DirectorySearchToken directorySearchToken) {
         files.add(directorySearchToken);
@@ -22,8 +22,11 @@ public class BasicDirectorySearch implements DirectorySearch {
             return "no matches found";
         }
         int i = 0;
-        for(DirectorySearchToken directorySearchToken: files){
+        for(DirectorySearchToken directorySearchToken: this.getTokens()){
             stringBuilder.append(directorySearchToken);
+            if( (i+1) >= LIMIT_TOP){
+                break;
+            }
             if ((i +1) < files.size()){
                 stringBuilder.append(" ");
             }

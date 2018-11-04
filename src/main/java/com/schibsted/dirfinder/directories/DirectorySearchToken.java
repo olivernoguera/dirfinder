@@ -5,6 +5,7 @@ public class DirectorySearchToken implements Comparable<DirectorySearchToken>{
     private final String fileName;
     private final Integer percentMatching;
 
+
     public DirectorySearchToken(final String fileName, final Integer percentMatching){
         this.fileName = fileName;
         this.percentMatching = percentMatching;
@@ -31,8 +32,11 @@ public class DirectorySearchToken implements Comparable<DirectorySearchToken>{
 
     @Override
     public int compareTo(DirectorySearchToken that) {
-        Integer thisPercentMatching = this.getPercentMatching();
-        Integer thatPercentMatching = that.getPercentMatching();
-        return thatPercentMatching-thisPercentMatching;
+        int result = that.getPercentMatching().compareTo(this.getPercentMatching());
+        if( result == 0){
+            return this.getFileName().compareTo(that.getFileName());
+        }else{
+            return result;
+        }
     }
 }
