@@ -2,7 +2,7 @@ package com.schibsted.dirfinder.directories;
 
 import java.util.Set;
 
-public interface DirectorySearch extends Comparable<DirectorySearchToken> {
+public interface DirectorySearch  {
 
     void append(DirectorySearchToken directorySearchToken);
 

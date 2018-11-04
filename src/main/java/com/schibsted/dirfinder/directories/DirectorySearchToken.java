@@ -1,6 +1,6 @@
 package com.schibsted.dirfinder.directories;
 
-public class DirectorySearchToken {
+public class DirectorySearchToken implements Comparable<DirectorySearchToken>{
 
     private final String fileName;
     private final Integer percentMatching;
@@ -27,5 +27,12 @@ public class DirectorySearchToken {
        stringBuilder.append(this.getPercentMatching());
        stringBuilder.append("%");
        return stringBuilder.toString();
+    }
+
+    @Override
+    public int compareTo(DirectorySearchToken that) {
+        Integer thisPercentMatching = this.getPercentMatching();
+        Integer thatPercentMatching = that.getPercentMatching();
+        return thatPercentMatching-thisPercentMatching;
     }
 }

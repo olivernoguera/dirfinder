@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
 import static org.mockito.Matchers.anyString;
@@ -33,13 +32,24 @@ public class BasicSearcherLineTest {
     }
 
     @Test
-    public void findWord() throws IOException {
+    public void findWord(){
 
         String line = "mockLine\n"+SearcherLine.END_TOKEN;
         SearcherLine searcherLine = executeLine(line);
         DirectorySearch directorySearch = new BasicDirectorySearch();
         directorySearch.append(new DirectorySearchToken("file1",90));
         directorySearch.append(new DirectorySearchToken("file2",30));
+        Mockito.when(directoryServiceMock.findWord(anyString())).thenReturn(directorySearch);
+        searcherLine.scan();
+
+    }
+
+    @Test
+    public void findWordNotMatches(){
+
+        String line = "mockLine\n"+SearcherLine.END_TOKEN;
+        SearcherLine searcherLine = executeLine(line);
+        DirectorySearch directorySearch = new BasicDirectorySearch();
         Mockito.when(directoryServiceMock.findWord(anyString())).thenReturn(directorySearch);
         searcherLine.scan();
 

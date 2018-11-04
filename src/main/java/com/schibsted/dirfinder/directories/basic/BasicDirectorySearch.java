@@ -3,12 +3,12 @@ package com.schibsted.dirfinder.directories.basic;
 import com.schibsted.dirfinder.directories.DirectorySearch;
 import com.schibsted.dirfinder.directories.DirectorySearchToken;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class BasicDirectorySearch implements DirectorySearch {
 
-    private Set<DirectorySearchToken> files = new HashSet();
+    private Set<DirectorySearchToken> files = new TreeSet();
 
 
     public void append(DirectorySearchToken directorySearchToken) {
@@ -34,10 +34,5 @@ public class BasicDirectorySearch implements DirectorySearch {
 
     public Set<DirectorySearchToken> getTokens(){
         return files;
-    }
-
-    @Override
-    public int compareTo(DirectorySearchToken o) {
-        return 0;
     }
 }

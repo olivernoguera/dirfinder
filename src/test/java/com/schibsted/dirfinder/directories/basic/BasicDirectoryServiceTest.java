@@ -9,9 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import java.util.Arrays;
-
-import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.CoreMatchers.is;
 
 public class BasicDirectoryServiceTest {
@@ -46,14 +43,13 @@ public class BasicDirectoryServiceTest {
         expectedDirectorySearch.append(new DirectorySearchToken("file1",30));
         expectedDirectorySearch.append(new DirectorySearchToken("file2",40));
         String expectedStringResult = "file2 : 40% file1 : 30%";
-        String expectedStringResult2 = "file1 : 30% file2 : 40%";
 
         Mockito.when(directory.findWordsInDirectory(wordTest)).thenReturn(expectedDirectorySearch);
         DirectorySearch directorySearchResult = directoryService.findWord(wordTest);
         Assert.assertThat("findWord",  expectedDirectorySearch,
                 is(directorySearchResult));
         Assert.assertThat("findWord string",  directorySearchResult.toString(),
-                anyOf(Arrays.asList(is(expectedStringResult),is(expectedStringResult2))));
+                (is(expectedStringResult)));
 
 
     }

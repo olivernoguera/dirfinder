@@ -45,6 +45,13 @@ public class BasicDirectoryTest {
     }
 
     @Test
+    public void findWordsInDirectory() throws IOException {
+        String words = "MockWords";
+        directory.setPathDirectory(folder.getRoot().getAbsolutePath());
+        directory.findWordsInDirectory(words);
+    }
+
+    @Test
     public void getPath() throws IOException {
         directory.setPathDirectory(folder.getRoot().getAbsolutePath());
         Assert.assertEquals(" Checking path", folder.getRoot().getPath(), directory.getPath());
