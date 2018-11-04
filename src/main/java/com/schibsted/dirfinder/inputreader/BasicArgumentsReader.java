@@ -1,4 +1,4 @@
-package com.scribsted.dirfinder.inputreader;
+package com.schibsted.dirfinder.inputreader;
 
 public class BasicArgumentsReader  implements ArgumentsReader{
 

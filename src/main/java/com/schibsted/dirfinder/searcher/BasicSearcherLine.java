@@ -1,6 +1,7 @@
-package com.scribsted.dirfinder.searcher;
+package com.schibsted.dirfinder.searcher;
 
-import com.scribsted.dirfinder.directories.DirectoryService;
+import com.schibsted.dirfinder.directories.DirectorySearch;
+import com.schibsted.dirfinder.directories.DirectoryService;
 
 import java.io.InputStream;
 import java.util.Scanner;
@@ -22,7 +23,8 @@ public class BasicSearcherLine  implements SearcherLine {
             if( line.equals(END_TOKEN)){
                 break;
             }
-            directoryService.findWord(line);
+            DirectorySearch directorySearch = directoryService.findWord(line);
+            System.out.println(directorySearch);
         }
     }
 

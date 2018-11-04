@@ -1,7 +1,7 @@
-package com.schibsted.dirfinder.inputreader;
+package com.schibsted.dirfinder.inputreader.basic;
 
-import com.scribsted.dirfinder.inputreader.ArgumentsReader;
-import com.scribsted.dirfinder.inputreader.BasicArgumentsReader;
+import com.schibsted.dirfinder.inputreader.ArgumentsReader;
+import com.schibsted.dirfinder.inputreader.BasicArgumentsReader;
 import org.junit.Assert;
 import org.junit.Test;
 

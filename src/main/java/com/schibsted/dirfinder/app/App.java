@@ -1,7 +1,7 @@
-package com.scribsted.dirfinder.app;
+package com.schibsted.dirfinder.app;
 
-import com.scribsted.dirfinder.searcher.BasicSearcher;
-import com.scribsted.dirfinder.searcher.Searcher;
+import com.schibsted.dirfinder.searcher.BasicSearcher;
+import com.schibsted.dirfinder.searcher.Searcher;
 
 public class App {
 

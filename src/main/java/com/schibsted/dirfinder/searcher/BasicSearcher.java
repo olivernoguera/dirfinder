@@ -1,11 +1,11 @@
-package com.scribsted.dirfinder.searcher;
+package com.schibsted.dirfinder.searcher;
 
-import com.scribsted.dirfinder.directories.BasicDirectory;
-import com.scribsted.dirfinder.directories.BasicDirectoryService;
-import com.scribsted.dirfinder.directories.Directory;
-import com.scribsted.dirfinder.directories.DirectoryService;
-import com.scribsted.dirfinder.inputreader.ArgumentsReader;
-import com.scribsted.dirfinder.inputreader.BasicArgumentsReader;
+import com.schibsted.dirfinder.directories.Directory;
+import com.schibsted.dirfinder.directories.DirectoryService;
+import com.schibsted.dirfinder.directories.basic.BasicDirectory;
+import com.schibsted.dirfinder.directories.basic.BasicDirectoryService;
+import com.schibsted.dirfinder.inputreader.ArgumentsReader;
+import com.schibsted.dirfinder.inputreader.BasicArgumentsReader;
 
 public class BasicSearcher implements Searcher {
 

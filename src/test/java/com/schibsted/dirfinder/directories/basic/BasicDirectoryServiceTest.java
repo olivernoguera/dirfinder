@@ -1,14 +1,12 @@
-package com.schibsted.dirfinder.directories;
+package com.schibsted.dirfinder.directories.basic;
 
-import com.scribsted.dirfinder.directories.BasicDirectoryService;
-import com.scribsted.dirfinder.directories.Directory;
-import com.scribsted.dirfinder.directories.DirectoryService;
+import com.schibsted.dirfinder.directories.Directory;
+import com.schibsted.dirfinder.directories.DirectorySearch;
+import com.schibsted.dirfinder.directories.DirectoryService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-
-import java.io.File;
 
 public class BasicDirectoryServiceTest {
 
@@ -26,17 +24,17 @@ public class BasicDirectoryServiceTest {
 
         String mockPath = "mockPath";
         Mockito.doNothing().when(directory).setPathDirectory(mockPath);
-        Mockito.when(directory.getFiles()).thenReturn(new File[]{});
         Mockito.when(directory.getPath()).thenReturn(mockPath);
         Directory result = directoryService.scanDirectory(mockPath);
 
-        Assert.assertEquals("Scan directory  files", 0, result.getFiles().length) ;
+        Assert.assertEquals("Scan directory  files", new Integer(0), result.getNumberReadFiles()) ;
         Assert.assertEquals("Scan directory  path ", mockPath, result.getPath()) ;
     }
 
     @Test
     public void findWord(){
         String wordTest = "test";
-        directoryService.findWord(wordTest);
+        DirectorySearch directorySearch = directoryService.findWord(wordTest);
+
     }
 }

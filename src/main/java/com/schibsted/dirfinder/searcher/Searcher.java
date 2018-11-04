@@ -1,4 +1,4 @@
-package com.scribsted.dirfinder.searcher;
+package com.schibsted.dirfinder.searcher;
 
 public interface Searcher {
 

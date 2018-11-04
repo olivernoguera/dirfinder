@@ -1,12 +1,9 @@
 package com.schibsted.dirfinder.searcher;
 
 
-import com.scribsted.dirfinder.directories.BasicDirectory;
-import com.scribsted.dirfinder.directories.BasicDirectoryService;
-import com.scribsted.dirfinder.inputreader.BasicArgumentsReader;
-import com.scribsted.dirfinder.searcher.BasicSearcher;
-import com.scribsted.dirfinder.searcher.BasicSearcherLine;
-import com.scribsted.dirfinder.searcher.Searcher;
+import com.schibsted.dirfinder.directories.basic.BasicDirectory;
+import com.schibsted.dirfinder.directories.basic.BasicDirectoryService;
+import com.schibsted.dirfinder.inputreader.BasicArgumentsReader;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +23,6 @@ public class BasicSearcherTest {
     public void setUp(){
 
     }
-
 
     @Test
     public void run() throws Exception {

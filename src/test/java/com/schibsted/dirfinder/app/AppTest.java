@@ -1,8 +1,7 @@
 package com.schibsted.dirfinder.app;
 
 
-import com.scribsted.dirfinder.app.App;
-import com.scribsted.dirfinder.searcher.BasicSearcher;
+import com.schibsted.dirfinder.searcher.BasicSearcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;

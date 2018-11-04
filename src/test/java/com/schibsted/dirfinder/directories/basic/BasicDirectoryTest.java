@@ -1,7 +1,6 @@
-package com.schibsted.dirfinder.directories;
+package com.schibsted.dirfinder.directories.basic;
 
-import com.scribsted.dirfinder.directories.BasicDirectory;
-import com.scribsted.dirfinder.directories.Directory;
+import com.schibsted.dirfinder.directories.Directory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,16 +36,16 @@ public class BasicDirectoryTest {
     }
 
     @Test
-    public void getFiles() throws IOException {
+    public void getNumberReadFiles() throws IOException {
         directory.setPathDirectory(folder.getRoot().getAbsolutePath());
-        Assert.assertEquals(" There is not files", 0, directory.getFiles().length);
-        File file = folder.newFile();
-        Assert.assertEquals(" There is 1 files", 1, directory.getFiles().length);
-        Assert.assertEquals(" There is  files", file, directory.getFiles()[0]);
+        Assert.assertEquals(" There is not files", new Integer(0), directory.getNumberReadFiles());
+        folder.newFile();
+        directory.setPathDirectory(folder.getRoot().getAbsolutePath());
+        Assert.assertEquals(" There is 1 files", new Integer(1), directory.getNumberReadFiles());
     }
 
     @Test
-    public void getPatb() throws IOException {
+    public void getPath() throws IOException {
         directory.setPathDirectory(folder.getRoot().getAbsolutePath());
         Assert.assertEquals(" Checking path", folder.getRoot().getPath(), directory.getPath());
     }
