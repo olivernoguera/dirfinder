@@ -10,11 +10,7 @@ public class BasicDirectoryService implements DirectoryService {
         this.directory = directory;
     }
 
-    public Directory getDirectory() {
-        return directory;
-    }
-
-    public Directory scannDirectory(String directoryPath) {
+    public Directory scanDirectory(String directoryPath) {
         directory.setPathDirectory(directoryPath);
         File[] files = directory.getFiles();
         System.out.println(files.length + " files read in directory " + directory.getPath());

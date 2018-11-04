@@ -18,7 +18,7 @@ public class Application {
 
         Directory directory = new BasicDirectory();
         DirectoryService directoryService = new BasicDirectoryService(directory);
-        directoryService.scannDirectory(directoryPath);
+        directoryService.scanDirectory(directoryPath);
         //TODO: Index all files in indexableDirectory
         Scanner keyboard = new Scanner(System.in);
 

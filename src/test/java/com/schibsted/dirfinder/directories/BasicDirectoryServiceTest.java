@@ -27,7 +27,7 @@ public class BasicDirectoryServiceTest {
         Mockito.doNothing().when(directory).setPathDirectory(mockPath);
         Mockito.when(directory.getFiles()).thenReturn(new File[]{});
         Mockito.when(directory.getPath()).thenReturn(mockPath);
-        Directory result = directoryService.scannDirectory(mockPath);
+        Directory result = directoryService.scanDirectory(mockPath);
 
         Assert.assertEquals("Scan directory  files", 0, result.getFiles().length) ;
         Assert.assertEquals("Scan directory  path ", mockPath, result.getPath()) ;
