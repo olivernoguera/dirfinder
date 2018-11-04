@@ -3,12 +3,12 @@ package com.schibsted.dirfinder.directories.basic;
 import com.schibsted.dirfinder.directories.DirectorySearch;
 import com.schibsted.dirfinder.directories.DirectorySearchToken;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class BasicDirectorySearch implements DirectorySearch {
 
-    private List<DirectorySearchToken> files = new ArrayList();
+    private Set<DirectorySearchToken> files = new HashSet();
 
 
     public void append(DirectorySearchToken directorySearchToken) {
@@ -21,16 +21,23 @@ public class BasicDirectorySearch implements DirectorySearch {
         if( files.isEmpty()){
             return "no matches found";
         }
-        for(int i = 0; i< files.size();i++){
-            stringBuilder.append(files.get(i));
+        int i = 0;
+        for(DirectorySearchToken directorySearchToken: files){
+            stringBuilder.append(directorySearchToken);
             if ((i +1) < files.size()){
                 stringBuilder.append(" ");
             }
+            i++;
         }
         return stringBuilder.toString();
     }
 
-    public List<DirectorySearchToken> getTokens(){
+    public Set<DirectorySearchToken> getTokens(){
         return files;
+    }
+
+    @Override
+    public int compareTo(DirectorySearchToken o) {
+        return 0;
     }
 }

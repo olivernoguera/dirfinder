@@ -17,11 +17,13 @@ public class BasicSearcherLine  implements SearcherLine {
     }
 
     public void scan(){
-        while (true) {
+        boolean quit = false;
+        while (!quit) {
             System.out.print("search> ");
             final String line = keyboard.nextLine();
             if( line.equals(END_TOKEN)){
-                break;
+                quit = true;
+                continue;
             }
             DirectorySearch directorySearch = directoryService.findWord(line);
             if( directorySearch.getTokens().isEmpty()){

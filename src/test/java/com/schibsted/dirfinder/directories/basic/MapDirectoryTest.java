@@ -108,13 +108,13 @@ public class MapDirectoryTest {
         Mockito.when(mapFileWordsMock.getPercentOcurrsOneWord("two words")).thenReturn(80);
 
         DirectorySearch directorySearch = directoryMap.findWordsInDirectory("two words");
-        Assert.assertEquals("findWordsInDirectory one token" ,1L ,directorySearch.getTokens().size());
-        Assert.assertEquals("findWordsInDirectory namefile" ,FAKEFILE ,directorySearch.getTokens().get(0).getFileName());
+        Assert.assertEquals("findWordsInDirectory one token" ,1L ,
+                directorySearch.getTokens().size());
+        Assert.assertEquals("findWordsInDirectory namefile" ,FAKEFILE ,
+                directorySearch.getTokens().iterator().next().getFileName());
 
 
     }
-
-
 
     private void mockLoad() throws Exception {
         PowerMockito.whenNew(HashMap.class).withAnyArguments().thenReturn(hashMapMock);
@@ -124,48 +124,4 @@ public class MapDirectoryTest {
         Mockito.doNothing().when(mapFileWordsMock).loadFile(any());
         directoryMap.load(folderMock);
     }
-    /*
-    @Test
-    public void loadOneWordInDirectory() throws IOException {
-
-        createFilesAndWords(1,1);
-        Assert.assertEquals("Folder read one file" ,new Integer(0) ,directoryMap.filesScanned());
-
-        directoryMap.load(folder.getRoot());
-        Assert.assertEquals("Folder read one file" ,new Integer(1) ,directoryMap.filesScanned());
-
-        DirectorySearch directorySearch = directoryMap.findWordsInDirectory(BASIC_WORD);
-        Assert.assertEquals("Folder read one file" ,createFileName(1),directorySearch.getTokens().get(0).getFileName());
-
-    }
-
-    @Test
-    public void findOneWordInOneFile() throws  IOException{
-        createFilesAndWords(1,1);
-        directoryMap.load(folder.getRoot());
-        Assert.assertEquals("Folder read one file" ,new Integer(1) ,directoryMap.filesScanned());
-
-        DirectorySearch directorySearch = directoryMap.findWordsInDirectory(BASIC_WORD);
-
-        Assert.assertEquals("Folder read one file" ,createFileName(1),directorySearch.getTokens().get(0).getFileName());
-        Assert.assertEquals("Folder read one file" ,new Integer(100),directorySearch.getTokens().get(0).getPercentMatching());
-
-    }
-
-
-    public void createFilesAndWords( int numberFiles, int numberWords) throws IOException {
-        for(int i = 1; i <= numberFiles;i++){
-            String fileName = createFileName(i);
-            File file = folder.newFile(fileName);
-            StringBuilder words = new StringBuilder();
-            for( int j = 0; j < numberWords; j++){
-                words.append(BASIC_WORD);
-            }
-            writeWordInFile(file,words.toString());
-
-
-        }
-    }
-    */
-
 }
