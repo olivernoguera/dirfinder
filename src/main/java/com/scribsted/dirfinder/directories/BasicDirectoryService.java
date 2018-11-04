@@ -1,18 +1,23 @@
 package com.scribsted.dirfinder.directories;
 
+import java.io.File;
+
 public class BasicDirectoryService implements DirectoryService {
 
-    private final String directory;
+    private Directory directory;
 
-    public BasicDirectoryService(String directory) {
+    public BasicDirectoryService( Directory directory){
         this.directory = directory;
     }
 
-    public String getDirectory() {
+    public Directory getDirectory() {
         return directory;
     }
 
-    public String scannDirectory() {
-        return null;
+    public Directory scannDirectory(String directoryPath) {
+        directory.setPathDirectory(directoryPath);
+        File[] files = directory.getFiles();
+        System.out.println(files.length + " files read in directory " + directory.getPath());
+        return directory;
     }
 }

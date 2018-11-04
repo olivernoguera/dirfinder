@@ -2,5 +2,5 @@ package com.scribsted.dirfinder.directories;
 
 public interface DirectoryService {
 
-    String scannDirectory();
+    Directory scannDirectory(String path);
 }
