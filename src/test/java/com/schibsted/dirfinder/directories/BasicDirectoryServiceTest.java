@@ -23,6 +23,7 @@ public class BasicDirectoryServiceTest {
 
     @Test
     public void scanDirectory(){
+
         String mockPath = "mockPath";
         Mockito.doNothing().when(directory).setPathDirectory(mockPath);
         Mockito.when(directory.getFiles()).thenReturn(new File[]{});
@@ -31,6 +32,11 @@ public class BasicDirectoryServiceTest {
 
         Assert.assertEquals("Scan directory  files", 0, result.getFiles().length) ;
         Assert.assertEquals("Scan directory  path ", mockPath, result.getPath()) ;
+    }
 
+    @Test
+    public void findWord(){
+        String wordTest = "test";
+        directoryService.findWord(wordTest);
     }
 }

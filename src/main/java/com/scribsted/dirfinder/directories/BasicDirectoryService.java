@@ -16,4 +16,8 @@ public class BasicDirectoryService implements DirectoryService {
         System.out.println(files.length + " files read in directory " + directory.getPath());
         return directory;
     }
+
+    public void findWord(String line) {
+
+    }
 }
