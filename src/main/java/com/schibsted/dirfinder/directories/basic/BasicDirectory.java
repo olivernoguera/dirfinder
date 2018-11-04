@@ -19,7 +19,7 @@ public class BasicDirectory implements Directory {
         if (!directory.isDirectory()) {
             throw new IllegalArgumentException(" Path is not a directory");
         }
-        this.directoryMap = new BasicDirectoryMap();
+        this.directoryMap = new MapDirectory();
         directoryMap.load(directory);
     }
 

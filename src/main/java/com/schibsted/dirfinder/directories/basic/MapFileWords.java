@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class BasicFileWords implements FileWords {
+public class MapFileWords implements FileWords {
 
 
     private Map<String,Integer> ocurrsByWord = new HashMap<>();

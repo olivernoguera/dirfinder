@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class BasicDirectoryMap implements DirectoryMap {
+public class MapDirectory implements DirectoryMap {
 
     private Map<String, FileWords> fileWordsByFileName;
 
@@ -34,7 +34,7 @@ public class BasicDirectoryMap implements DirectoryMap {
             return;
         }
         String fileName = file.getName();
-        FileWords fileWords = new BasicFileWords();
+        FileWords fileWords = new MapFileWords();
         fileWords.loadFile(file);
         this.fileWordsByFileName.put(fileName, fileWords);
     }

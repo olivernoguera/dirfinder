@@ -11,9 +11,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class BasicFileWordsTest {
+public class MapFileWordsTest {
 
-    private FileWords fileWords = new BasicFileWords();
+    private FileWords fileWords = new MapFileWords();
     private TemporaryFolder folder = new TemporaryFolder();
     private final static String BASIC_FILE = "testFile";
     private final static String BASIC_WORD = "testWord";

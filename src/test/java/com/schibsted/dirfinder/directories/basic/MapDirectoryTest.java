@@ -22,22 +22,22 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({BasicDirectoryMap.class})
-public class BasicDirectoryMapTest {
+@PrepareForTest({MapDirectory.class})
+public class MapDirectoryTest {
 
     public static final String FAKEFILE = "FAKEFILE";
-    private DirectoryMap directoryMap = new BasicDirectoryMap();
+    private DirectoryMap directoryMap = new MapDirectory();
     private File folderMock;
     private File fileInFolderMock;
     private HashMap hashMapMock;
-    private BasicFileWords basicFileWordsMock;
+    private MapFileWords mapFileWordsMock;
 
     @Before
     public void setUp() throws IOException {
         folderMock = Mockito.mock(File.class);
         fileInFolderMock = Mockito.mock(File.class);
         hashMapMock = Mockito.mock(HashMap.class);
-        basicFileWordsMock = Mockito.mock(BasicFileWords.class);
+        mapFileWordsMock = Mockito.mock(MapFileWords.class);
     }
 
     @Test
@@ -54,11 +54,11 @@ public class BasicDirectoryMapTest {
     public void loadDirectoryFileNotExists() throws Exception {
 
         PowerMockito.whenNew(HashMap.class).withAnyArguments().thenReturn(hashMapMock);
-        PowerMockito.whenNew(BasicFileWords.class).withNoArguments().thenReturn(basicFileWordsMock);
+        PowerMockito.whenNew(MapFileWords.class).withNoArguments().thenReturn(mapFileWordsMock);
         Mockito.when(folderMock.listFiles()).thenReturn(new File[]{fileInFolderMock});
         Mockito.when(fileInFolderMock.isFile()).thenReturn(Boolean.TRUE);
 
-        Mockito.doThrow(FileNotFoundException.class).when(basicFileWordsMock).loadFile(fileInFolderMock);
+        Mockito.doThrow(FileNotFoundException.class).when(mapFileWordsMock).loadFile(fileInFolderMock);
         directoryMap.load(folderMock);
     }
 
@@ -82,7 +82,7 @@ public class BasicDirectoryMapTest {
         mockLoad();
 
         Mockito.when(hashMapMock.keySet()).thenReturn(new HashSet(Arrays.asList(FAKEFILE)));
-        Mockito.when(hashMapMock.get(anyString())).thenReturn(basicFileWordsMock);
+        Mockito.when(hashMapMock.get(anyString())).thenReturn(mapFileWordsMock);
         DirectorySearch directorySearch = directoryMap.findWordsInDirectory("");
         Assert.assertEquals("findEmptyWordsInDirectory" ,0L ,directorySearch.getTokens().size());
 
@@ -93,7 +93,7 @@ public class BasicDirectoryMapTest {
 
         mockLoad();
         Mockito.when(hashMapMock.keySet()).thenReturn(new HashSet(Arrays.asList(FAKEFILE)));
-        Mockito.when(hashMapMock.get(anyString())).thenReturn(basicFileWordsMock);
+        Mockito.when(hashMapMock.get(anyString())).thenReturn(mapFileWordsMock);
         DirectorySearch directorySearch = directoryMap.findWordsInDirectory(null);
         Assert.assertEquals("findNullWordsInDirectory" ,0L ,directorySearch.getTokens().size());
 
@@ -104,8 +104,8 @@ public class BasicDirectoryMapTest {
 
         mockLoad();
         Mockito.when(hashMapMock.keySet()).thenReturn(new HashSet(Arrays.asList(FAKEFILE)));
-        Mockito.when(hashMapMock.get(anyString())).thenReturn(basicFileWordsMock);
-        Mockito.when(basicFileWordsMock.getPercentOcurrsOneWord("two words")).thenReturn(80);
+        Mockito.when(hashMapMock.get(anyString())).thenReturn(mapFileWordsMock);
+        Mockito.when(mapFileWordsMock.getPercentOcurrsOneWord("two words")).thenReturn(80);
 
         DirectorySearch directorySearch = directoryMap.findWordsInDirectory("two words");
         Assert.assertEquals("findWordsInDirectory one token" ,1L ,directorySearch.getTokens().size());
@@ -118,10 +118,10 @@ public class BasicDirectoryMapTest {
 
     private void mockLoad() throws Exception {
         PowerMockito.whenNew(HashMap.class).withAnyArguments().thenReturn(hashMapMock);
-        PowerMockito.whenNew(BasicFileWords.class).withNoArguments().thenReturn(basicFileWordsMock);
+        PowerMockito.whenNew(MapFileWords.class).withNoArguments().thenReturn(mapFileWordsMock);
         Mockito.when(folderMock.listFiles()).thenReturn(new File[]{fileInFolderMock});
         Mockito.when(fileInFolderMock.isFile()).thenReturn(Boolean.TRUE);
-        Mockito.doNothing().when(basicFileWordsMock).loadFile(any());
+        Mockito.doNothing().when(mapFileWordsMock).loadFile(any());
         directoryMap.load(folderMock);
     }
     /*
