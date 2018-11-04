@@ -7,7 +7,12 @@
     <groupId>com.schibsted</groupId>
     <artifactId>dirfinder</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <packaging>jar</packaging>
+
     <build>
+        <finalName>Searcher</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -90,6 +95,5 @@
 
 
     </dependencies>
-
 
 </project>

@@ -10,8 +10,8 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({App.class})
-public class AppTest {
+@PrepareForTest({DirectorySearcher.class})
+public class DirectorySearcherTest {
 
     @Test
     public void testApp() throws Exception {
@@ -21,7 +21,7 @@ public class AppTest {
         BasicSearcher basicSearcher = Mockito.mock(BasicSearcher.class);
         Mockito.doNothing().when(basicSearcher).run(args);
         PowerMockito.whenNew(BasicSearcher.class).withNoArguments().thenReturn(basicSearcher);
-        App.main(args);
+        DirectorySearcher.main(args);
 
     }
 }
