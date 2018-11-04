@@ -18,6 +18,9 @@ public class BasicDirectorySearch implements DirectorySearch {
     @Override
     public String toString(){
         final StringBuilder stringBuilder = new StringBuilder();
+        if( files.isEmpty()){
+            return "no matches found";
+        }
         for(int i = 0; i< files.size();i++){
             stringBuilder.append(files.get(i));
             if ((i +1) < files.size()){

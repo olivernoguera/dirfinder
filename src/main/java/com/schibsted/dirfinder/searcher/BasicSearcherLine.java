@@ -24,7 +24,11 @@ public class BasicSearcherLine  implements SearcherLine {
                 break;
             }
             DirectorySearch directorySearch = directoryService.findWord(line);
+            if( directorySearch.getTokens().isEmpty()){
+                System.out.print(line + " ");
+            }
             System.out.println(directorySearch);
+
         }
     }
 
